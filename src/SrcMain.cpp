@@ -1,6 +1,7 @@
 #include "SrcMain.h"
 #include "Fasta.hpp"
 #include "AminoAcidCount.hpp"
+#include "NeedlemanWunsch.hpp"
 #include <iostream>
 
 
@@ -41,6 +42,11 @@ void ProcessCommandArgs(int argc, const char* argv[])
     else if(argc == 3){
         std::string file1 = argv[1];
         std::string file2 = argv[2];
+        Fasta fasta1 = Fasta(file1);
+        Fasta fasta2 = Fasta(file2);
+        NeedlemanWunsch nw = NeedlemanWunsch(fasta1, fasta2);
+        nw.performNW();
+        nw.print();
     }
 }
 

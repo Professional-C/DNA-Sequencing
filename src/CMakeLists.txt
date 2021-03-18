@@ -3,12 +3,14 @@ set(HEADER_FILES
 	SrcMain.h
     Fasta.hpp
     AminoAcidCount.hpp
+    NeedlemanWunsch.hpp
 )
 
 set(SOURCE_FILES
 	SrcMain.cpp
     Fasta.cpp
     AminoAcidCount.cpp
+    NeedlemanWunsch.cpp
 )
 
 # Don't change this

@@ -26,7 +26,7 @@ public:
         return &count;
     }
     
-    int getTotal() {
+    const int getTotal() {
         return total;
     }
     
