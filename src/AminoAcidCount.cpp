@@ -53,6 +53,7 @@ void AminoAcidCount::translate(Fasta fasta) {
     
     std::string sequence = fasta.getSequence();
     std::string codon;
+    std::string getAmino;
     int state = 0;
     int base = 0;
     int tempCounter = 0;
@@ -62,9 +63,7 @@ void AminoAcidCount::translate(Fasta fasta) {
         base = convertBase(c);
         if(state < 3){
             state = stoi(table[state][base]);
-            //std::cout << state << std::endl;
             if(state == 3){
-                //std::cout << tempCounter/3 << std::endl;
                 count["M"] += 1;
                 total++;
             }
@@ -72,8 +71,7 @@ void AminoAcidCount::translate(Fasta fasta) {
         else{
             codon += c;
             if(codon.size() == 3){
-                //std::cout << codon << std::endl;
-                std::string getAmino = table[state][base];
+                getAmino = table[state][base];
                 if(getAmino == "X"){ // Stop Codon
                     state = 0;
                 }

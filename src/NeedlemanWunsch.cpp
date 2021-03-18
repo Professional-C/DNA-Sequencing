@@ -44,7 +44,6 @@ void NeedlemanWunsch::performNW()
         }
     }
     
-    //std::cout << scores[scores.size()-1][scores[0].size()-1];
     score = scores[scores.size()-1][scores[0].size()-1];
     
     std::string seqA = f1.getSequence();
@@ -73,7 +72,6 @@ void NeedlemanWunsch::performNW()
             solA += "_";
             j -= 1;
         }
-        //std::cout << solA << std::endl << solB << std::endl;
     }
     
     std::reverse(solA.begin(),solA.end());
