@@ -6,6 +6,7 @@
 //
 
 #include "Fasta.hpp"
+#include <string>
 
 Fasta::Fasta(const std::string source)
 {
@@ -16,12 +17,12 @@ Fasta::Fasta(const std::string source)
         size = file.tellg();
         sequence.reserve(size);
         file.seekg(0);
-        char c = file.get();
+        file.get();
         std::getline(file,header);
-        while(file.get(c)){
-            if(c == 'A' || c == 'T' || c == 'C' || c == 'G'){
-               sequence += c;
-            }
+        std::string line;
+        while(getline(file,line)){
+            remove_if(line.begin(),line.end(),[] (char c) { return (c != 'A' || c != 'T' || c != 'C' || c != 'G');});
+            sequence += line;
         }
     }
 }

@@ -60,23 +60,23 @@ TEST_CASE("Amino Acids Tests", "[student]")
 //		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Mus_musculus_c19_amino.txt");
 //		REQUIRE(result);
 //	}
-//	SECTION("Mouse Chromosome 19 - Timed (run this in release!!)")
-//	{
-//		const char* argv[] = {
-//			"tests/tests",
-//			"input/Mus_musculus_c19.fasta"
-//		};
-//		auto start = std::chrono::high_resolution_clock::now();
-//		ProcessCommandArgs(2, argv);
-//		auto end = std::chrono::high_resolution_clock::now();
-//		auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-//		float seconds = duration / 1000000000.0f;
-//
-//		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Mus_musculus_c19_amino.txt");
-//		REQUIRE(result);
-//		WARN("****Mouse Chromosome 19 timed test took: " << seconds << "s****");
-//		REQUIRE(seconds < 1.25f);
-//	}
+	SECTION("Mouse Chromosome 19 - Timed (run this in release!!)")
+	{
+		const char* argv[] = {
+			"tests/tests",
+			"input/Mus_musculus_c19.fasta"
+		};
+		auto start = std::chrono::high_resolution_clock::now();
+		ProcessCommandArgs(2, argv);
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+		float seconds = duration / 1000000000.0f;
+
+		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Mus_musculus_c19_amino.txt");
+		REQUIRE(result);
+		WARN("****Mouse Chromosome 19 timed test took: " << seconds << "s****");
+		REQUIRE(seconds < 1.25f);
+	}
 }
 
 // Provided pairwise match tests
