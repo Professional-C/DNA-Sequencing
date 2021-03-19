@@ -15,13 +15,13 @@
 class Fasta
 {
 public:
-    Fasta(const std::string source);
+    Fasta(std::string source);
     
-    Fasta(const Fasta& oldFasta)
-        :header(oldFasta.header),
-         sequence(oldFasta.sequence)
-    {}
-    
+//    Fasta(const Fasta& oldFasta)
+//        :header(oldFasta.header),
+//         sequence(oldFasta.sequence)
+//    {}
+//
     std::string getSequence() {
         return sequence;
     }

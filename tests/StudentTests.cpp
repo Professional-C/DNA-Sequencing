@@ -20,46 +20,46 @@ TEST_CASE("Function test cases", "[student]")
 // (Once you pass the first section, comment out the other)
 TEST_CASE("Amino Acids Tests", "[student]")
 {
-//	SECTION("TAS2R16")
-//	{
-//		const char* argv[] = {
-//			"tests/tests",
-//			"input/TAS2R16_Homo_sapiens.fasta"
-//		};
-//		ProcessCommandArgs(2, argv);
-//		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/TAS2R16_amino.txt");
-//		REQUIRE(result);
-//	}
-//	SECTION("A1C1")
-//	{
-//		const char* argv[] = {
-//			"tests/tests",
-//			"input/A1C1_Homo_sapiens.fasta"
-//		};
-//		ProcessCommandArgs(2, argv);
-//		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/A1C1_amino.txt");
-//		REQUIRE(result);
-//	}
-//	SECTION("Ebola")
-//	{
-//		const char* argv[] = {
-//			"tests/tests",
-//			"input/Zaire_ebolavirus.fasta"
-//		};
-//		ProcessCommandArgs(2, argv);
-//		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Zaire_amino.txt");
-//		REQUIRE(result);
-//	}
-//	SECTION("Mouse Chromosome 19 (run this in release!!)")
-//	{
-//		const char* argv[] = {
-//			"tests/tests",
-//			"input/Mus_musculus_c19.fasta"
-//		};
-//		ProcessCommandArgs(2, argv);
-//		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Mus_musculus_c19_amino.txt");
-//		REQUIRE(result);
-//	}
+	SECTION("TAS2R16")
+	{
+		const char* argv[] = {
+			"tests/tests",
+			"input/TAS2R16_Homo_sapiens.fasta"
+		};
+		ProcessCommandArgs(2, argv);
+		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/TAS2R16_amino.txt");
+		REQUIRE(result);
+	}
+	SECTION("A1C1")
+	{
+		const char* argv[] = {
+			"tests/tests",
+			"input/A1C1_Homo_sapiens.fasta"
+		};
+		ProcessCommandArgs(2, argv);
+		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/A1C1_amino.txt");
+		REQUIRE(result);
+	}
+	SECTION("Ebola")
+	{
+		const char* argv[] = {
+			"tests/tests",
+			"input/Zaire_ebolavirus.fasta"
+		};
+		ProcessCommandArgs(2, argv);
+		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Zaire_amino.txt");
+		REQUIRE(result);
+	}
+	SECTION("Mouse Chromosome 19 (run this in release!!)")
+	{
+		const char* argv[] = {
+			"tests/tests",
+			"input/Mus_musculus_c19.fasta"
+		};
+		ProcessCommandArgs(2, argv);
+		bool result = CheckTextFilesSame("amino.txt", "sampleoutput/Mus_musculus_c19_amino.txt");
+		REQUIRE(result);
+	}
 	SECTION("Mouse Chromosome 19 - Timed (run this in release!!)")
 	{
 		const char* argv[] = {

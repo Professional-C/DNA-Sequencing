@@ -10,7 +10,7 @@
 
 #include "Fasta.hpp"
 #include <string>
-#include <map>
+#include <unordered_map>
 
 class AminoAcidCount
 {
@@ -22,17 +22,17 @@ public:
         return translation;
     }
     
-    std::map<std::string,int>* getMap(){
+    std::unordered_map<char,int>* getMap(){
         return &count;
     }
     
-    const int getTotal() {
+    int const getTotal() {
         return total;
     }
     
 private:
     std::string translation = "";
-    std::map<std::string,int> count;
+    std::unordered_map<char,int> count;
     int total = 0;
 };
 

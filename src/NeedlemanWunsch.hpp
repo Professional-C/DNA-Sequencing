@@ -33,7 +33,7 @@ private:
     Fasta f2;
     std::string solA;
     std::string solB;
-    int score;
+    int score = 0;
     std::string pipes;
 };
 
