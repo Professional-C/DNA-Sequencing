@@ -11,8 +11,7 @@
 
 void NeedlemanWunsch::performNW()
 {
-//    std::vector<std::vector<int>> scores(f1.getSequence().size()+1, std::vector<int>(f2.getSequence().size()+1));
-//    std::vector<std::vector<Direction>> dirs(f1.getSequence().size()+1, std::vector<Direction>(f2.getSequence().size()+1));
+    
     std::vector<std::vector<short>> scores(f2.getSequence().size()+1, std::vector<short>(f1.getSequence().size()+1));
     std::vector<std::vector<Direction>> dirs(f2.getSequence().size()+1, std::vector<Direction>(f1.getSequence().size()+1));
     
@@ -25,10 +24,13 @@ void NeedlemanWunsch::performNW()
         dirs[0][j] = UP;
     }
     
+    std::string seq1 = f1.getSequence();
+    std::string seq2 = f2.getSequence();
+    
     
     for(size_t i = 1; i < scores.size(); i++){
         for(size_t j = 1; j < scores[0].size(); j++){
-            short match = f1.getSequence().at(j-1)==f2.getSequence().at(i-1)? 1 : -1;
+            short match = seq1.at(j-1)==seq2.at(i-1)? 1 : -1;
             short d = scores[i-1][j-1] + match;
             short l = scores[i][j-1]-1;
             short u = scores[i-1][j]-1;
@@ -62,19 +64,19 @@ void NeedlemanWunsch::performNW()
             dir = dirs[i][j];
         }
         if(dir == DIAGONAL){
-            solA += f1.getSequence().at(j-1);
-            solB += f2.getSequence().at(i-1);
+            solA += seq1.at(j-1);
+            solB += seq2.at(i-1);
             i -= 1;
             j -= 1;
         }
         else if(dir == LEFT){
-            solA += f1.getSequence().at(j-1);
+            solA += seq1.at(j-1);
             solB += "_";
             j -= 1;
         }
         else if(dir == UP){
             solA += "_";
-            solB += f2.getSequence().at(i-1);
+            solB += seq2.at(i-1);
             i -= 1;
         }
     }
