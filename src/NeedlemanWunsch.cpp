@@ -46,29 +46,26 @@ void NeedlemanWunsch::performNW()
     
     score = scores[scores.size()-1][scores[0].size()-1];
     
-    std::string seqA = f1.getSequence();
-    std::string seqB = f2.getSequence();
-    
     int i = scores.size()-1;
     int j = scores[0].size()-1;
     while( (i != 0) || (j != 0)){
         Direction dir = dirs[i][j];
         if(dir == DIAGONAL){
             //std:: cout << "diagonal" << std::endl;
-            solA += seqA.at(i-1);
-            solB += seqB.at(j-1);
+            solA += f1.getSequence().at(i-1);
+            solB += f2.getSequence().at(j-1);
             i -= 1;
             j -= 1;
         }
         else if(dir == UP){
             //std::cout << "up" << std::endl;
             solB += "_";
-            solA += seqA.at(i-1);
+            solA += f1.getSequence().at(i-1);
             i -= 1;
         }
         else if(dir == LEFT){
             //std::cout << "left" << std::endl;
-            solB += seqB.at(j-1);
+            solB += f2.getSequence().at(j-1);
             solA += "_";
             j -= 1;
         }

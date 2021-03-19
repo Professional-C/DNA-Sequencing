@@ -21,7 +21,11 @@ public:
     NeedlemanWunsch(Fasta fasta1, Fasta fasta2)
         :f1(fasta1),
         f2(fasta2)
-    {}
+    {
+        solA.reserve(fasta1.getSequence().size() + fasta2.getSequence().size());
+        solB.reserve(fasta1.getSequence().size() + fasta2.getSequence().size());
+        
+    }
     
     void performNW();
     

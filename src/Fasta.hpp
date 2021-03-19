@@ -17,11 +17,6 @@ class Fasta
 public:
     Fasta(std::string source);
     
-//    Fasta(const Fasta& oldFasta)
-//        :header(oldFasta.header),
-//         sequence(oldFasta.sequence)
-//    {}
-//
     std::string getSequence() {
         return sequence;
     }
