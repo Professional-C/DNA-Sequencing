@@ -20,6 +20,16 @@ TEST_CASE("Function test cases", "[student]")
 // (Once you pass the first section, comment out the other)
 TEST_CASE("Amino Acids Tests", "[student]")
 {
+    SECTION("string test")
+    {
+        const char* argv[] = {
+            "tests/tests",
+            "input/test.fasta"
+        };
+        ProcessCommandArgs(2, argv);
+        bool result = CheckTextFilesSame("amino.txt", "sampleoutput/TAS2R16_amino.txt");
+        REQUIRE(result);
+    }
 	SECTION("TAS2R16")
 	{
 		const char* argv[] = {

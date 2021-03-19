@@ -11,22 +11,24 @@
 
 void NeedlemanWunsch::performNW()
 {
-    std::vector<std::vector<int>> scores(f1.getSequence().size()+1, std::vector<int>(f2.getSequence().size()+1));
-    std::vector<std::vector<Direction>> dirs(f1.getSequence().size()+1, std::vector<Direction>(f2.getSequence().size()+1));
+//    std::vector<std::vector<int>> scores(f1.getSequence().size()+1, std::vector<int>(f2.getSequence().size()+1));
+//    std::vector<std::vector<Direction>> dirs(f1.getSequence().size()+1, std::vector<Direction>(f2.getSequence().size()+1));
+    std::vector<std::vector<short>> scores(f2.getSequence().size()+1, std::vector<short>(f1.getSequence().size()+1));
+    std::vector<std::vector<Direction>> dirs(f2.getSequence().size()+1, std::vector<Direction>(f1.getSequence().size()+1));
     
     for(size_t i = 0; i < scores.size(); i++){
         scores[i][0] = -i;
-        dirs[i][0] = UP;
+        dirs[i][0] = LEFT;
     }
     for(size_t j = 0; j < scores[0].size(); j++){
         scores[0][j] = -j;
-        dirs[0][j] = LEFT;
+        dirs[0][j] = UP;
     }
     
     
     for(size_t i = 1; i < scores.size(); i++){
         for(size_t j = 1; j < scores[0].size(); j++){
-            short match = f1.getSequence().at(i-1)==f2.getSequence().at(j-1)? 1 : -1;
+            short match = f1.getSequence().at(j-1)==f2.getSequence().at(i-1)? 1 : -1;
             short d = scores[i-1][j-1] + match;
             short l = scores[i][j-1]-1;
             short u = scores[i-1][j]-1;
@@ -35,11 +37,11 @@ void NeedlemanWunsch::performNW()
             if (max == d){
                 dirs[i][j] = DIAGONAL;
             }
-            else if(max == u){
-                dirs[i][j] = UP;
+            else if(max == l){
+                dirs[i][j] = LEFT;
             }
             else {
-                dirs[i][j] = LEFT;
+                dirs[i][j] = UP;
             }
         }
     }
@@ -50,24 +52,30 @@ void NeedlemanWunsch::performNW()
     int j = scores[0].size()-1;
     while( (i != 0) || (j != 0)){
         Direction dir = dirs[i][j];
+        if( i <= 0) {
+            dir = LEFT;
+        }
+        else if ( j <= 0) {
+            dir = UP;
+        }
+        else {
+            dir = dirs[i][j];
+        }
         if(dir == DIAGONAL){
-            //std:: cout << "diagonal" << std::endl;
-            solA += f1.getSequence().at(i-1);
-            solB += f2.getSequence().at(j-1);
+            solA += f1.getSequence().at(j-1);
+            solB += f2.getSequence().at(i-1);
             i -= 1;
+            j -= 1;
+        }
+        else if(dir == LEFT){
+            solA += f1.getSequence().at(j-1);
+            solB += "_";
             j -= 1;
         }
         else if(dir == UP){
-            //std::cout << "up" << std::endl;
-            solB += "_";
-            solA += f1.getSequence().at(i-1);
-            i -= 1;
-        }
-        else if(dir == LEFT){
-            //std::cout << "left" << std::endl;
-            solB += f2.getSequence().at(j-1);
             solA += "_";
-            j -= 1;
+            solB += f2.getSequence().at(i-1);
+            i -= 1;
         }
     }
     

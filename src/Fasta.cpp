@@ -21,7 +21,7 @@ Fasta::Fasta(const std::string source)
         std::getline(file,header);
         std::string line;
         while(getline(file,line)){
-            remove_if(line.begin(),line.end(),[] (char c) { return (c != 'A' || c != 'T' || c != 'C' || c != 'G');});
+            line.erase(std::remove(line.begin(),line.end(), 'N'), line.end());
             sequence += line;
         }
     }
